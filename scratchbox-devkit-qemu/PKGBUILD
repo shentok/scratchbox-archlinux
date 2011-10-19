@@ -1,0 +1,28 @@
+# Maintainer: Stephan Platz <arch@stephan-platz.de>
+pkgname=scratchbox-devkit-qemu
+pkgver=0.13.90
+pkgrel=1
+pkgdesc="additional files to support qemu"
+arch=('x86_64' 'i686')
+url="http://www.scratchbox.org/"
+license=('GPL')
+depends=('scratchbox-core')
+source=(http://www.scratchbox.org/download/files/sbox-releases/hathor/tarball/$pkgname-$pkgver-0rabbit1-i386.tar.gz)
+md5sums=('2e9ecc06c4c1bf0e1f1e8d6c6622608d')
+
+build() {
+  return 0
+}
+
+package() {
+  cd "$srcdir"
+  echo "Copy binaries..."
+  mkdir -p $pkgdir/opt
+  cp -R scratchbox $pkgdir/opt/
+#  mkdir -p $pkgdir/opt/scratchbox/tools/bin
+#  mkdir -p $pkgdir/opt/scratchbox/etc
+#  cp -R scratchbox/devkits/qemu/bin $pkgdir/opt/scratchbox/tools/
+#  cp -R scratchbox/devkits/qemu/etc $pkgdir/opt/scratchbox/
+}
+
+# vim:set ts=2 sw=2 et:

@@ -1,0 +1,8 @@
+pre_remove() {
+  /opt/scratchbox/sbin/sbox_ctl stop
+  rm /opt/scratchbox/.run_me_first_done
+  rm -rf /opt/scratchbox/etc
+  rm -rf /opt/scratchbox/dev
+}
+
+# vim:set ts=2 sw=2 et:

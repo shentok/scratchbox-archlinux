@@ -1,0 +1,23 @@
+# Maintainer: Stephan Platz <arch@stephan-platz.de>
+pkgname=scratchbox-libs
+pkgver=1.0.26
+pkgrel=1
+pkgdesc="libraries required by core, devkits and toolchains"
+arch=('x86_64' 'i686')
+url="http://www.scratchbox.org/"
+license=('GPL')
+source=(http://www.scratchbox.org/download/files/sbox-releases/hathor/tarball/$pkgname-$pkgver-i386.tar.gz)
+md5sums=('6c39169ab39353ff28b4271f3605e6d6')
+
+build() {
+  return 0
+}
+
+package() {
+  cd "$srcdir"
+  mkdir $pkgdir/opt
+  echo "Copy binaries..."
+  cp -R scratchbox $pkgdir/opt/
+}
+
+# vim:set ts=2 sw=2 et:

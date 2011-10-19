@@ -1,0 +1,23 @@
+# Maintainer: Serge Ziryukin <ftrvxmtrx@gmail.com>
+
+pkgname=scratchbox-toolchain-cs2009q3-eglibc2.10-armv7-hard
+pkgver=1.0.24
+pkgrel=18
+pkgdesc="scratchbox cs2009q3-eglibc2.10-armv7-hard toolchain"
+arch=('i686' 'x86_64')
+url="http://www.scratchbox.org/"
+license=('GPL')
+depends=('scratchbox-core')
+source=(http://www.scratchbox.org/download/files/sbox-releases/hathor/tarball/$pkgname-$pkgver-$pkgrel-i386.tar.gz)
+md5sums=('ba787ce3148ab6c77c6de8b35c18b1a3')
+
+build() {
+  return 0
+}
+
+package() {
+  cd "$srcdir"
+  mkdir $pkgdir/opt
+  echo "Copying files..."
+  cp -R scratchbox $pkgdir/opt/
+}

@@ -1,0 +1,23 @@
+# Maintainer: Serge Ziryukin <ftrvxmtrx@gmail.com>
+
+pkgname=scratchbox-devkit-apt-https
+pkgver=1.0.11
+pkgrel=1
+pkgdesc="scratchbox devkit git"
+arch=('i686' 'x86_64')
+url="http://www.scratchbox.org/"
+license=('GPL')
+depends=('scratchbox-core')
+source=(http://www.scratchbox.org/download/files/sbox-releases/hathor/tarball/$pkgname-$pkgver-i386.tar.gz)
+md5sums=('1afd1f4d72ddd79ae27f20f0f3f2f380')
+
+build() {
+  return 0
+}
+
+package() {
+  cd "$srcdir"
+  mkdir $pkgdir/opt
+  echo "Copying files..."
+  cp -R scratchbox $pkgdir/opt/
+}

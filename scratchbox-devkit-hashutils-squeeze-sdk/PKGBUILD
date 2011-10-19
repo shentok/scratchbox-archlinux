@@ -1,0 +1,24 @@
+# Maintainer: Stephan Platz <arch@stephan-platz.de>
+pkgname=scratchbox-devkit-hashutils-squeeze-sdk
+pkgver=1.0.12
+pkgrel=1
+pkgdesc="environment and tools for Debian development"
+arch=('x86_64' 'i686')
+url="http://www.scratchbox.org/"
+license=('GPL')
+depends=('scratchbox-core')
+source=(http://www.scratchbox.org/download/files/sbox-releases/hathor/tarball/$pkgname-$pkgver-i386.tar.gz)
+
+build() {
+  return 0
+}
+
+package() {
+  cd "$srcdir"
+  mkdir $pkgdir/opt
+  echo "Copy binaries..."
+  cp -R scratchbox $pkgdir/opt/
+}
+
+# vim:set ts=2 sw=2 et:
+md5sums=('da01b2dc46c56f038498ea8d5c0241d9')
