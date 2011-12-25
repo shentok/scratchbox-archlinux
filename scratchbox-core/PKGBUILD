@@ -12,11 +12,9 @@ optdepends=("scratchbox-devkit-debian: support for debian development"
   "scratchbox-devkit-perl: perl support"
   "scratchbox-devkit-qemu: qemu support")
 install="$pkgname.install"
-source=(http://www.scratchbox.org/download/files/sbox-releases/hathor/tarball/$pkgname-$pkgver-i386.tar.gz
-  http://www.stephan-platz.de/arch/scratchbox.init)
+source=(http://www.scratchbox.org/download/files/sbox-releases/hathor/tarball/$pkgname-$pkgver-i386.tar.gz)
 noextract=('scratchbox.init')
-md5sums=('6aae35a319b33213a545969f598818db'
-         '3b286918e532e076d72291ae8138d41d')
+md5sums=('6aae35a319b33213a545969f598818db')
 
 build() {
   return 0
@@ -27,8 +25,19 @@ package() {
   mkdir $pkgdir/opt
   echo "Copy binaries..."
   cp -R scratchbox $pkgdir/opt/
-  mkdir -p $pkgdir/etc/rc.d/
-  cp $srcdir/scratchbox.init $pkgdir/etc/rc.d/scratchbox
+
+  mkdir -p $pkgdir/etc/rc.d
+  ln -sf /opt/scratchbox/sbin/sbox_ctl          $pkgdir/etc/rc.d/scratchboxd
+
+  mkdir -p $pkgdir/usr/sbin
+  ln -sf /opt/scratchbox/sbin/sbox_adduser      $pkgdir/usr/sbin/sb-adduser
+
+  mkdir -p $pkgdir/usr/bin
+  ln -sf /opt/scratchbox/login                  $pkgdir/usr/bin/scratchbox
+  ln -sf /opt/scratchbox/tools/bin/sb-menu      $pkgdir/usr/bin/sb-menu
+  ln -sf /opt/scratchbox/tools/bin/sb-conf      $pkgdir/usr/bin/sb-conf
+  ln -sf /opt/scratchbox/tools/bin/sbrsh-conf   $pkgdir/usr/bin/sbrsh-conf
+  ln -sf /opt/scratchbox/tools/bin/sb-reinstall $pkgdir/usr/bin/sb-reinstall
 }
 
 # vim:set ts=2 sw=2 et:
