@@ -29,10 +29,8 @@ package() {
   mkdir -p $pkgdir/etc/rc.d
   ln -sf /opt/scratchbox/sbin/sbox_ctl          $pkgdir/etc/rc.d/scratchboxd
 
-  mkdir -p $pkgdir/usr/sbin
-  ln -sf /opt/scratchbox/sbin/sbox_adduser      $pkgdir/usr/sbin/sb-adduser
-
   mkdir -p $pkgdir/usr/bin
+  ln -sf /opt/scratchbox/sbin/sbox_adduser      $pkgdir/usr/bin/sb-adduser
   ln -sf /opt/scratchbox/login                  $pkgdir/usr/bin/scratchbox
   ln -sf /opt/scratchbox/tools/bin/sb-menu      $pkgdir/usr/bin/sb-menu
   ln -sf /opt/scratchbox/tools/bin/sb-conf      $pkgdir/usr/bin/sb-conf
